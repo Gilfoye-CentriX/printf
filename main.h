@@ -1,50 +1,31 @@
-#ifndef MAIN_H
-#define MAIN_H
-
-#include <unistd.h>
-#include <stdlib.h>
+#ifndef _main_h_
+#define _main_h_
 #include <stdarg.h>
-
-/* utils.c */
-int _strlen(const char *);
-int print(char *);
-char *itoa(long int, int);
-
-/* printf.c */
-int _printf(const char *, ...);
-
-/* handler.c */
-int handler(const char *, va_list);
-int percent_handler(const char *, va_list, int *);
-
-/* printers */
-int print_string(va_list);
-int print_char(va_list);
-int print_integer(va_list);
-int print_binary(va_list);
-int print_rot(va_list);
-int print_unsigned(va_list);
-int print_octal(va_list);
-int print_hexadecimal_low(va_list);
-int print_hexadecimal_upp(va_list);
-int print_pointer(va_list);
-int print_rev_string(va_list);
-
-/* _putchar.c */
-int _putchar(char);
-int buffer(char);
-
 /**
- * struct _format - Typedef struct
+ * struct formatarg - Struct of elements
+ * @forma: data type format
+ * @f: pointer to function
  *
- * @type: Format
- * @f: The function associated
- **/
-typedef struct _format
+ */
+
+typedef struct formatarg
 {
-  char type;
-  int (*f)(va_list);
-} format;
+char *forma;
+int (*f)(va_list);
 
+} formatico;
 
-#endif
+int _printf(const char *format, ...);
+int printch(va_list valist);
+int prints(va_list valist);
+int printdi(va_list valist);
+int printper(va_list valist);
+int printbi(va_list valist);
+int printrev(va_list valist);
+int print_rev(char *s);
+int printrot(va_list valist);
+char *rot13(char *s1);
+int _putchar(char c);
+int _puts(char *str);
+
+#endif /* _main_h_ */
